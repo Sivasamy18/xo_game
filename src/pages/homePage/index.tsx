@@ -4,8 +4,8 @@ import "./styles.scss";
 
 export const HomePage: React.FC = () => {
   const [game, setGame] = useState(false);
-  const [player1, setPlayer1] = useState("null");
-  const [player2, setPlayer2] = useState("null");
+  const [player1, setPlayer1] = useState("");
+  const [player2, setPlayer2] = useState("");
 
   const hide = { display: "none" };
   const show = { display: "block" };
@@ -16,7 +16,13 @@ export const HomePage: React.FC = () => {
   return (
     <div className="home">
       {game ? (
-        <GamePage setGame={setGame} player1={player1} player2={player2} />
+        <GamePage
+          setGame={setGame}
+          player1={player1}
+          player2={player2}
+          setPlayer1={setPlayer1}
+          setPlayer2={setPlayer2}
+        />
       ) : (
         <div className="card">
           <h2>Welcome to XXX-OOO Game </h2>
@@ -43,10 +49,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            <div
-              className="col"
-              style={player1 && player2 != "null" ? show : hide}
-            >
+            <div className="col" style={!player1 || !player2 ? hide : show}>
               <button
                 type="submit"
                 onClick={() => gameStart()}

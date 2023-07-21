@@ -12,9 +12,19 @@ type TProps = {
   setGame: any;
   player1: any;
   player2: any;
+  setPlayer1: any;
+  setPlayer2: any;
 };
-export const GamePage: React.FC<TProps> = ({ setGame, player1, player2 }) => {
+export const GamePage: React.FC<TProps> = ({
+  setGame,
+  player1,
+  player2,
+  setPlayer2,
+  setPlayer1,
+}) => {
   const back = () => {
+    setPlayer2("")
+    setPlayer1("")
     setGame(false);
   };
   const emptyGrid = new Array(DIMENSIONS ** 2).fill(null);
