@@ -10,8 +10,10 @@ import "./styles.scss";
 
 type TProps = {
   setGame: any;
+  player1: any;
+  player2: any;
 };
-export const GamePage: React.FC<TProps> = ({ setGame }) => {
+export const GamePage: React.FC<TProps> = ({ setGame, player1, player2 }) => {
   const back = () => {
     setGame(false);
   };
@@ -46,10 +48,11 @@ export const GamePage: React.FC<TProps> = ({ setGame }) => {
   };
 
   const isWinner = (x: number, y: number, z: number) => {
+    // console.log(player1,player2);
     if (x == y && y == z && x != null) {
       x == 0
-        ? setWinner("Player X is winner")
-        : setWinner("Player O is winner");
+        ? setWinner(player1 + " is winner")
+        : setWinner(player2 + " is winner");
     }
   };
 
@@ -71,7 +74,7 @@ export const GamePage: React.FC<TProps> = ({ setGame }) => {
   return (
     <div>
       {winner != "" ? (
-        winner
+        <div className="winner">{winner}</div>
       ) : (
         <div className="Container">
           {grid.map((value, index) => {
@@ -92,7 +95,9 @@ export const GamePage: React.FC<TProps> = ({ setGame }) => {
         </div>
       )}
       <div>
-        <button onClick={back}>Back</button>
+        <button onClick={back} className="button">
+          Back
+        </button>
       </div>
     </div>
   );
