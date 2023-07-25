@@ -105,10 +105,13 @@ export const GamePage: React.FC<TProps> = ({
         </div>
       )}
       <div>
-        <button onClick={back} className="button">
+        <button className="button-32" onClick={back} >
           Back
         </button>
       </div>
     </div>
   );
 };
+
+
+
